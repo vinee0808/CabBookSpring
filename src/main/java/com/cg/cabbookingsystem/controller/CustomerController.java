@@ -3,6 +3,7 @@ package com.cg.cabbookingsystem.controller;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,13 +17,14 @@ import com.cg.cabbookingsystem.service.CustomerService;
 @Transactional
 @RestController
 @RequestMapping("/customer")
+@CrossOrigin(origins = "http://localhost:4200")
 //http://localhost:8180/customer
 class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
 	@GetMapping(value = "/get/{email}/{password}", produces = "application/json")
-	public Customer fetchCustomer(@PathVariable String email, String password) {
+	public Customer fetchCustomer(@PathVariable String email, @PathVariable String password) {
 		return customerService.findCustomer(email, password);
 	}
 
