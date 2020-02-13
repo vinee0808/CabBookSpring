@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import ch.qos.logback.core.subst.Token.Type;
 
 
 /**
@@ -26,6 +30,7 @@ public class Customer {
 	private int customerId;
 	@Column(length = 50)
 	private String name;
+	@Temporal(TemporalType.DATE)
 	private Date dob;
 	@Column(length = 50)
 	private String gender;
