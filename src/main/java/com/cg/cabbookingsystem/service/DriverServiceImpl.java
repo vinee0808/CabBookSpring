@@ -53,7 +53,7 @@ public class DriverServiceImpl implements DriverService {
 
 	@Override
 	public List<Report> getAllReport() {
-		return null;
+		return reportDao.findAll();
 	}
 
 	@Override

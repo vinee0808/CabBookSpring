@@ -2,6 +2,7 @@ package com.cg.cabbookingsystem.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 public class Booking {
 
 	@Id
+	@GeneratedValue(generator = "book_seq")
 	private int bookingId;
 	@Column(length = 15)
 	private String source;

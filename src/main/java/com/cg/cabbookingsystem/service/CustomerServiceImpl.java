@@ -1,5 +1,7 @@
 package com.cg.cabbookingsystem.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,11 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer saveCustomer(Customer customer) {
 
 		return customerDao.save(customer);
+	}
+
+	@Override
+	public List<Customer> getAllCustomers() {
+		return customerDao.findAll();
 	}
 
 }
