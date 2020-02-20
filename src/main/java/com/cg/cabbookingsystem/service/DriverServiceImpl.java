@@ -1,6 +1,5 @@
 package com.cg.cabbookingsystem.service;
 
-
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -14,21 +13,27 @@ import com.cg.cabbookingsystem.dao.ReportDao;
 import com.cg.cabbookingsystem.dto.Booking;
 import com.cg.cabbookingsystem.dto.Driver;
 import com.cg.cabbookingsystem.dto.Report;
+import com.cg.cabbookingsystem.exception.DriverNotFoundException;
 
 @Service
 @Transactional
 public class DriverServiceImpl implements DriverService {
 	@Autowired
 	private DriverDao driverDao;
-	@Autowired 
+	@Autowired
 	private BookingDao bookingDao;
 	@Autowired
 	private ReportDao reportDao;
 
 	@Override
-	public Driver findDriver(String email, String password) {
+	public Driver findDriver(String email, String password) throws DriverNotFoundException {
+		Driver driver;
+		driver = driverDao.getDriver(email, password);
+		if (driver == null) {
+			throw new DriverNotFoundException("Driver not found");
+		}
+		return driver;
 
-		return driverDao.getDriver(email, password);
 	}
 
 	@Override
@@ -36,20 +41,15 @@ public class DriverServiceImpl implements DriverService {
 		return driverDao.save(driver);
 	}
 
-	
-
 	@Override
 	public Driver findDriver(String email) {
 		return driverDao.getDriver(email);
 	}
 
-	
-
 	@Override
 	public Driver updateDriver(Driver driver) {
 		return driverDao.save(driver);
 	}
-
 
 	@Override
 	public List<Report> getAllReport() {
@@ -73,9 +73,8 @@ public class DriverServiceImpl implements DriverService {
 
 	@Override
 	public Booking saveBooking(Booking booking) {
-		
+
 		return bookingDao.save(booking);
 	}
-	
 
 }

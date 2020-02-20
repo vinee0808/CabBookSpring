@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.cabbookingsystem.dto.ContactUs;
 import com.cg.cabbookingsystem.dto.Customer;
 import com.cg.cabbookingsystem.dto.CustomerRequest;
+import com.cg.cabbookingsystem.exception.CustomerNotFoundException;
 import com.cg.cabbookingsystem.service.CustomerRequestService;
 import com.cg.cabbookingsystem.service.CustomerService;
 
@@ -31,7 +33,7 @@ class CustomerController {
 	private CustomerRequestService cRequestService;
 
 	@GetMapping(value = "/get/{email}/{password}", produces = "application/json")
-	public Customer fetchCustomer(@PathVariable String email, @PathVariable String password) {
+	public Customer fetchCustomer(@PathVariable String email, @PathVariable String password) throws CustomerNotFoundException {
 		return customerService.findCustomer(email, password);
 	}
 
@@ -52,8 +54,13 @@ class CustomerController {
 	}
 
 	@GetMapping(value = "/getAllCustomers")
-	public List<Customer> getAll(){
+	public List<Customer> getAll() {
 		return customerService.getAllCustomers();
+	}
+
+	@PostMapping(value = "/contact", consumes = "application/json")
+	public ContactUs saveContact(@RequestBody ContactUs contact) {
+		return customerService.saveContact(contact);
 	}
 
 }

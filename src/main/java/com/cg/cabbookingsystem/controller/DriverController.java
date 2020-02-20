@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.cabbookingsystem.dto.Booking;
 import com.cg.cabbookingsystem.dto.Driver;
 import com.cg.cabbookingsystem.dto.Report;
+import com.cg.cabbookingsystem.exception.DriverNotFoundException;
 import com.cg.cabbookingsystem.service.DriverService;
 
 @Transactional
@@ -36,7 +37,7 @@ public class DriverController {
 
 	
 	@GetMapping(value = "get/{email}/{password}", produces = "application/json")
-	public Driver  fetchDriver(@PathVariable String email, @PathVariable String password) {
+	public Driver  fetchDriver(@PathVariable String email, @PathVariable String password) throws DriverNotFoundException {
 		return driverService.findDriver(email, password);
 	}
 

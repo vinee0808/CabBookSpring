@@ -5,9 +5,10 @@ import java.util.List;
 import com.cg.cabbookingsystem.dto.Booking;
 import com.cg.cabbookingsystem.dto.Driver;
 import com.cg.cabbookingsystem.dto.Report;
+import com.cg.cabbookingsystem.exception.DriverNotFoundException;
 
 public interface DriverService {
-	Driver findDriver(String email, String password);
+	Driver findDriver(String email, String password) throws DriverNotFoundException;
 
 	Driver findDriver(String email);
 
