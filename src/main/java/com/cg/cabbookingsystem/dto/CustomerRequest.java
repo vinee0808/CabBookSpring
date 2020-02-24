@@ -24,22 +24,16 @@ public class CustomerRequest {
 	private String destination;
 	
 	private String model;
-	private double estimatePrice;
 	
 	
-	public CustomerRequest(int requestId, int customerId, String source, String destination, double estimatePrice,
+	public CustomerRequest(int requestId, int customerId, String source, String destination, 
 			String model) {
 		super();
 		this.requestId = requestId;
 		this.customerId = customerId;
 		this.source = source;
 		this.destination = destination;
-		
 		this.model = model;
-		this.estimatePrice=estimatePrice;
-	}
-	public CustomerRequest() {
-		// TODO Auto-generated constructor stub
 	}
 	public int getRequestId() {
 		return requestId;
@@ -59,12 +53,6 @@ public class CustomerRequest {
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
-	public double getEstimatePrice() {
-		return estimatePrice;
-	}
-	public void setEstimatePrice(double estimatePrice) {
-		this.estimatePrice = estimatePrice;
-	}
 	public String getSource() {
 		return source;
 	}
@@ -78,6 +66,11 @@ public class CustomerRequest {
 		this.destination = destination;
 	}
 	
+	@Override
+	public String toString() {
+		return "CustomerRequest [requestId=" + requestId + ", customerId=" + customerId + ", source=" + source
+				+ ", destination=" + destination +  ", model=" + model + "]";
+	}
 	
 	
 }

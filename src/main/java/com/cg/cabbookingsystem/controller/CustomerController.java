@@ -17,7 +17,6 @@ import com.cg.cabbookingsystem.dto.ContactUs;
 import com.cg.cabbookingsystem.dto.Customer;
 import com.cg.cabbookingsystem.dto.CustomerRequest;
 import com.cg.cabbookingsystem.exception.CustomerNotFoundException;
-import com.cg.cabbookingsystem.service.CustomerRequestService;
 import com.cg.cabbookingsystem.service.CustomerService;
 
 @Transactional
@@ -29,8 +28,6 @@ class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-	@Autowired
-	private CustomerRequestService cRequestService;
 
 	@GetMapping(value = "/get/{email}/{password}", produces = "application/json")
 	public Customer fetchCustomer(@PathVariable String email, @PathVariable String password) throws CustomerNotFoundException {
@@ -43,15 +40,6 @@ class CustomerController {
 		return customerService.saveCustomer(customer);
 	}
 
-	@PostMapping(value = "/request", consumes = "application/json")
-	public CustomerRequest saveRequest(@RequestBody CustomerRequest cRequest) {
-		return cRequestService.saveRequest(cRequest);
-	}
-
-	@GetMapping(value = "/getAllRequests", produces = "application/json")
-	public List<CustomerRequest> getAllRequests() {
-		return cRequestService.getAllRequests();
-	}
 
 	@GetMapping(value = "/getAllCustomers")
 	public List<Customer> getAll() {
