@@ -11,6 +11,7 @@ import com.cg.cabbookingsystem.dao.BookingDao;
 import com.cg.cabbookingsystem.dao.DriverDao;
 import com.cg.cabbookingsystem.dao.ReportDao;
 import com.cg.cabbookingsystem.dto.Booking;
+import com.cg.cabbookingsystem.dto.CustomerRequest;
 import com.cg.cabbookingsystem.dto.Driver;
 import com.cg.cabbookingsystem.dto.Report;
 import com.cg.cabbookingsystem.exception.DriverNotFoundException;
@@ -68,13 +69,13 @@ public class DriverServiceImpl implements DriverService {
 
 	@Override
 	public List<Booking> getBookingDetails() {
-		return bookingDao.findAll();
+		return bookingDao.findAllBooking();
 	}
 
 	@Override
-	public Booking saveBooking(Booking booking) {
+	public Booking saveBooking(Booking request) {
 
-		return bookingDao.save(booking);
+		return bookingDao.save(request);
 	}
 
 }

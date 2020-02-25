@@ -1,9 +1,14 @@
 package com.cg.cabbookingsystem.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
 import com.cg.cabbookingsystem.dto.Booking;
+import com.cg.cabbookingsystem.dto.CustomerRequest;
 
-public interface BookingDao extends JpaRepository<Booking, Integer> {
+public interface BookingDao {
+
+	Booking save(Booking request);
+
+	List<Booking> findAllBooking();
 
 }

@@ -36,5 +36,7 @@ public interface TripService {
 	 * @return List<String>   List of all locations
 	 */
 	List<String> getLocations();
+	
+	List<CustomerRequest> getRequests();
 
 }

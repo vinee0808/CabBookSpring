@@ -3,6 +3,7 @@ package com.cg.cabbookingsystem.service;
 import java.util.List;
 
 import com.cg.cabbookingsystem.dto.Booking;
+import com.cg.cabbookingsystem.dto.CustomerRequest;
 import com.cg.cabbookingsystem.dto.Driver;
 import com.cg.cabbookingsystem.dto.Report;
 import com.cg.cabbookingsystem.exception.DriverNotFoundException;
@@ -24,6 +25,6 @@ public interface DriverService {
 
 	List<Booking> getBookingDetails();
 
-	Booking saveBooking(Booking booking);
+	Booking saveBooking(Booking request);
 
 }

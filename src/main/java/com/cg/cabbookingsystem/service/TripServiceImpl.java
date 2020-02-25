@@ -91,4 +91,10 @@ public class TripServiceImpl implements TripService {
 		return locationDao.listOfLocations();
 	}
 
+	@Override
+	public List<CustomerRequest> getRequests() {
+		return tripDao.getAllRequest();
+	}
+
+
 }

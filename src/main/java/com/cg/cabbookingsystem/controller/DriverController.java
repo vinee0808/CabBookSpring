@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.cabbookingsystem.dto.Booking;
+import com.cg.cabbookingsystem.dto.CustomerRequest;
 import com.cg.cabbookingsystem.dto.Driver;
 import com.cg.cabbookingsystem.dto.Report;
 import com.cg.cabbookingsystem.exception.DriverNotFoundException;
@@ -80,8 +81,8 @@ public class DriverController {
 	}
 	
 	@PostMapping(value = "/saveBooking", consumes = "application/json")
-	public Booking saveBooking(@RequestBody Booking booking) {
-		return driverService.saveBooking(booking);
+	public Booking saveBooking(@RequestBody Booking request) {
+		return driverService.saveBooking(request);
 	}
 	
 	@GetMapping( value = "/getAllBooking", produces = "application/json")

@@ -1,5 +1,7 @@
 package com.cg.cabbookingsystem.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +32,12 @@ public class TripDetailsDaoImpl implements TripDetailsDao{
 		mgr.persist(details);
 		return details;
 	}
+
+	@Override
+	public List<CustomerRequest> getAllRequest() {
+		return mgr.createNamedQuery("getAllRequests", CustomerRequest.class).getResultList();
+	}
+
+
 
 }
